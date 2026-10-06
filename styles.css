@@ -92,6 +92,13 @@ h3{font-size:1.25rem;margin:0 0 10px}
 .tracklist small{display:block;color:var(--muted);margin-top:2px}
 .platform-grid,.download-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px}
 .platform-grid a,.download-grid a{border:1px solid var(--line);background:rgba(255,255,255,.025);padding:18px;border-radius:16px;font-weight:700}
+.platform-card{display:flex;align-items:center;gap:14px;min-height:76px;transition:transform .2s ease,background .2s ease,border-color .2s ease,box-shadow .2s ease}
+.platform-card .platform-icon{width:34px;height:34px;object-fit:contain;flex:0 0 34px}
+.platform-card span{flex:1;font-size:1rem}
+.platform-card strong{font-size:1.05rem;color:var(--muted);transition:transform .2s ease,color .2s ease}
+.platform-card:hover{transform:translateY(-2px);background:rgba(255,255,255,.065);border-color:rgba(255,255,255,.26);box-shadow:0 12px 34px rgba(0,0,0,.2)}
+.platform-card:hover strong{transform:translate(2px,-2px);color:var(--text)}
+.platform-card-all{border-color:rgba(121,169,255,.28)}
 .platform-grid a:hover,.download-grid a:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.25)}
 .download-grid a{display:flex;justify-content:space-between;gap:14px;align-items:center}
 .download-grid small{color:var(--muted)}
