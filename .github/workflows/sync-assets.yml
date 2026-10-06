@@ -1,0 +1,31 @@
+name: Sync website images
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/sync-assets.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download official website images
+        run: |
+          mkdir -p assets
+          curl -L --fail --retry 3 "https://i.audiomack.com/jcarr009/4ecc5ac28b.webp?width=1200" -o assets/artist-hero.jpg
+          curl -L --fail --retry 3 "https://cdn.amuse.io/4f921219-b69a-4ff5-9674-ab339489624b.400x400.jpg" -o assets/made-in-babel.jpg
+          curl -L --fail --retry 3 "https://cdn.amuse.io/621c30fa-39b9-47f0-847e-6d5a60ffb4e0.400x400.jpg" -o assets/salon-33-3.jpg
+          curl -L --fail --retry 3 "https://cdn.amuse.io/c3eb26db-2aee-4017-a7a1-55f77bcf6b34.400x400.jpg" -o assets/tu-luz-inmensa.jpg
+          file assets/*
+      - name: Commit assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/artist-hero.jpg assets/made-in-babel.jpg assets/salon-33-3.jpg assets/tu-luz-inmensa.jpg
+          git diff --cached --quiet || git commit -m "Self-host official J.Cärr images [skip ci]"
+          git push
