@@ -1,0 +1,41 @@
+name: Extract J.Cärr EPK photographs
+on:
+  push:
+    paths:
+      - ".github/workflows/extract-jcarr-photos.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Extract and validate photos
+        run: |
+          python - <<'PY'
+          import zipfile, os
+          zip_path="assets/JCarr_fotos_web_EPK.zip"
+          expected={
+            "assets/jcarr-dj-evento-ciudad.webp",
+            "assets/jcarr-dj-retrato-evento.webp",
+            "assets/jcarr-dj-evento-tropical.webp"
+          }
+          with zipfile.ZipFile(zip_path) as z:
+              names=set(z.namelist())
+              assert names == expected, f"Unexpected ZIP entries: {names}"
+              for name in expected:
+                  data=z.read(name)
+                  assert data[:4] == b"RIFF" and data[8:12] == b"WEBP", f"Invalid WebP: {name}"
+                  with open(name,"wb") as f: f.write(data)
+                  print(name, len(data))
+          PY
+      - name: Commit unpacked images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/jcarr-dj-evento-ciudad.webp assets/jcarr-dj-retrato-evento.webp assets/jcarr-dj-evento-tropical.webp
+          git diff --cached --quiet || git commit -m "Publish J.Cärr event photos for website"
+          git push
