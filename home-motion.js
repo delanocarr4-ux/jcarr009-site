@@ -8,12 +8,12 @@ if ('IntersectionObserver' in window) {
         observer.unobserve(entry.target);
       }
     }
-  }, { threshold: 0.14 });
+  }, { threshold: 0.02 });
 
-  document.querySelectorAll('.reveal').forEach((section) => observer.observe(section));
+  document.querySelectorAll('.reveal, main > .section').forEach((section) => observer.observe(section));
 }
 
-const hero = document.querySelector('.hero');
+const hero = document.querySelector('.hero[id="inicio"], .booking-hero');
 let framePending = false;
 function updateHero() {
   framePending = false;
@@ -24,11 +24,13 @@ function updateHero() {
   const distance = Math.min(Math.max(window.scrollY, 0), hero.offsetHeight);
   hero.style.setProperty('--shift', `${distance * 0.16}px`);
 }
-window.addEventListener('scroll', () => {
-  if (!framePending && !reducedMotion.matches) {
-    framePending = true;
-    requestAnimationFrame(updateHero);
-  }
-}, { passive: true });
-reducedMotion.addEventListener('change', updateHero);
-updateHero();
+if (hero) {
+  window.addEventListener('scroll', () => {
+    if (!framePending && !reducedMotion.matches) {
+      framePending = true;
+      requestAnimationFrame(updateHero);
+    }
+  }, { passive: true });
+  reducedMotion.addEventListener('change', updateHero);
+  updateHero();
+}
