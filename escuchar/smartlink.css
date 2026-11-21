@@ -86,3 +86,21 @@ footer { padding: 1.45rem 0 2rem; }
   .platforms a { transition: none; }
   .platforms a:hover, .platforms a:focus-visible, .platforms a:active { transform: none; }
 }
+
+.album-details {
+  max-width: 32rem;
+  margin: 2.5rem auto 0;
+  border-top: 1px solid var(--line);
+  padding-top: 1.65rem;
+}
+.album-details h2 { text-align: start; }
+.album-details p { color: var(--muted); margin: 0 0 1.4rem; }
+.album-details h3 { margin: 0 0 .6rem; font-size: 1rem; }
+.tracklist { margin: 0; padding-inline-start: 1.85rem; }
+.tracklist li { padding: .65rem .25rem; border-bottom: 1px solid var(--line); }
+.tracklist li::marker { color: var(--blue); font-variant-numeric: tabular-nums; }
+.tracklist li strong, .tracklist li span { display: inline-block; }
+.tracklist li span { color: var(--muted); margin-inline-start: .5rem; font-size: .875rem; }
+@media (max-width: 390px) {
+  .tracklist li span { display: block; margin-inline-start: 0; }
+}
