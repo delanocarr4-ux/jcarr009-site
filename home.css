@@ -10,3 +10,26 @@
 .logo img{width:clamp(7.5rem,13vw,11rem);height:auto}
 .feature-news{margin-top:.85rem}
 .feature-news a{color:var(--muted);text-decoration:underline;text-underline-offset:.2em}
+
+/* Home page layout */
+.bound { width: min(100% - 2 * var(--gutter), 75rem); }
+.hero { min-height: clamp(36rem, 76svh, 48rem); }
+.hero h1 { font-size: clamp(4rem, 12vw, 10rem); }
+.hero-copy { padding-block: clamp(6rem, 12vw, 9rem) 5.5rem; }
+.button { border-radius: .55rem; }
+.nav-book { border-radius: .45rem; }
+.feature { gap: clamp(2rem, 6vw, 6rem); padding-block: clamp(3.75rem, 8vw, 7.5rem); }
+.cover { width: min(100%, 30rem); border-radius: 14px; }
+.feature h2, .story h2 { font-size: clamp(2.75rem, 6.5vw, 5.75rem); }
+.record { border-radius: 14px; grid-template-columns: clamp(5.5rem, 15vw, 11rem) minmax(0, 1fr); }
+.record img { aspect-ratio: 1; object-fit: cover; }
+.record h3 { overflow-wrap: anywhere; }
+.contact { align-items: flex-start; }
+@media (max-width: 680px) {
+  .header nav { align-items: flex-start; }
+  .navlinks { flex-basis: 100%; gap: .35rem .9rem; }
+  .navlinks a { min-height: 2.75rem; display: inline-flex; align-items: center; }
+  .hero-copy { padding-block: 11rem 5rem; }
+  .hero-art img { object-position: center 35%; }
+  .contact .actions { margin-top: .25rem; }
+}

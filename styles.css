@@ -156,3 +156,61 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
   from { transform: translateY(26px); opacity: 0; }
   to { transform: none; opacity: 1; }
 }
+
+/* Interior page layout */
+:root {
+  --section-space: clamp(2.75rem, 6vw, 5.5rem);
+  --grid-space: clamp(1rem, 2.5vw, 2rem);
+  --image-radius: 14px;
+}
+html { scroll-padding-top: 8rem; }
+.nav-inner { gap: clamp(.75rem, 2vw, 1.5rem); }
+.nav-links { gap: clamp(.65rem, 1.4vw, 1.125rem); }
+.nav-links a { min-height: 2.75rem; display: inline-flex; align-items: center; }
+.page-hero {
+  padding-block: var(--section-space) clamp(2rem, 4vw, 3.5rem);
+  border-bottom: 0;
+}
+.page-hero h1, .booking-hero h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1.04;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+.section { padding-block: var(--section-space); }
+.section h2 { font-size: clamp(1.8rem, 4vw, 3.15rem); line-height: 1.08; text-wrap: balance; }
+.lead, .prose { max-width: 68ch; line-height: 1.65; }
+.actions { margin-top: 1.35rem; gap: .65rem; }
+.btn { min-height: 2.75rem; padding: .6rem 1rem; border-radius: .6rem; }
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 5vw, 4.5rem); }
+.booking-hero { min-height: 0; padding-block: var(--section-space); }
+.booking-hero .hero-visual { width: min(100%, 25rem); justify-self: center; }
+.booking-hero .hero-visual::before { content: none; }
+.booking-hero .hero-visual img { max-height: 31rem; }
+.release-card, .portrait-card { width: min(100%, 31rem); padding: 0; overflow: hidden; }
+.release-card img { width: 100%; object-fit: contain; background: var(--surface); }
+.portrait-card img { max-height: 33rem; }
+.portrait-card .kicker { padding-inline: 1rem; }
+.release-card, .release-card img, .portrait-card, .portrait-card img,
+.hero-visual img, .tile-cover, .event-photo-grid figure, .press-card,
+.video-shell, .card, .release-tile, .contact-card { border-radius: var(--image-radius); }
+.cards, .release-grid, .press-gallery, .event-photo-grid {
+  gap: var(--grid-space);
+  margin-top: 1.5rem;
+}
+.press-card > img { height: auto; aspect-ratio: 16/10; }
+.event-photo-grid img { height: auto; aspect-ratio: 4/3; }
+.tracklist { max-width: 54rem; }
+.tracklist li { grid-template-columns: 2rem minmax(0, 1fr); border-radius: .55rem; }
+@media (max-width: 960px) {
+  .nav-inner { height: auto; min-height: 72px; flex-wrap: wrap; padding-block: .5rem; }
+  .nav-links { order: 3; flex-basis: 100%; overflow-x: auto; white-space: nowrap; }
+}
+@media (max-width: 720px) {
+  .grid-2 { grid-template-columns: minmax(0, 1fr); }
+  .booking-hero .hero-visual { justify-self: start; width: min(100%, 19rem); }
+}
+@media (max-width: 550px) {
+  .page-hero h1, .booking-hero h1 { text-wrap: initial; }
+  .tracklist li { padding: .65rem .75rem; gap: .6rem; }
+}
