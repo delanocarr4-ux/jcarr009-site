@@ -22,7 +22,7 @@ Before production launch:
 
 Plantilla para smart links de J.Cärr
 
-Usar https://jcarr009.com/escuchar/made-in-babel como referencia.
+Usar https://jcarr009.com/escuchar/made-in-babel como referencia para álbumes y EP, y https://jcarr009.com/escuchar/tu-luz-inmensa como referencia para sencillos.
 - Reutilizar escuchar/smartlink.css y la estructura de escuchar/made-in-babel.html: logo, video oficial al inicio cuando exista, portada desenfocada, botones animados, opción de compartir y redes sociales en una sola fila al final.
 - Verificar los enlaces directos de cada plataforma e incluir una introducción breve en todos los lanzamientos, incluidos los sencillos. Solo para álbumes y EP, añadir el listado oficial en orden, con el idioma y el enlace individual de YouTube de cada canción. Si algún enlace individual aún no está disponible, dejar la pista sin enlace hasta poder verificarlo.
 - Actualizar la URL para compartir, los metadatos, la ruta en vercel.json y el sitemap para cada lanzamiento.

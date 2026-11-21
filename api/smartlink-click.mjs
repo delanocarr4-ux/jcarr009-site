@@ -1,16 +1,23 @@
-const allowedItems = new Set([
+const platforms = [
   'platform-spotify',
   'platform-apple-music',
   'platform-youtube',
   'platform-audiomack',
-  'track-uykxuPFAyHA',
-  'track-njiXB1XBPBc',
-  'track-N81xVNV19sU',
-  'track-1XYWZsVnRuU',
-  'track-Rvh5rCWFy7Y',
-  'track-s3-dhrV-S8E',
-  'track-sor-maL6BL4',
-  'track-KuxufouoNNA',
+];
+
+const allowedItems = new Map([
+  ['tu-luz-inmensa', new Set(platforms)],
+  ['made-in-babel', new Set([
+    ...platforms,
+    'track-uykxuPFAyHA',
+    'track-njiXB1XBPBc',
+    'track-N81xVNV19sU',
+    'track-1XYWZsVnRuU',
+    'track-Rvh5rCWFy7Y',
+    'track-s3-dhrV-S8E',
+    'track-sor-maL6BL4',
+    'track-KuxufouoNNA',
+  ])],
 ]);
 
 export default async function handler(request, response) {
@@ -25,14 +32,15 @@ export default async function handler(request, response) {
     return response.status(403).end();
   }
 
-  const item = typeof request.body === 'string'
-    ? new URLSearchParams(request.body).get('item')
-    : request.body?.item;
+  const body = typeof request.body === 'string'
+    ? Object.fromEntries(new URLSearchParams(request.body))
+    : request.body ?? {};
+  const { release = 'made-in-babel', item } = body;
 
-  if (!allowedItems.has(item)) {
+  if (!allowedItems.get(release)?.has(item)) {
     return response.status(400).end();
   }
 
-  console.log('jcarr_smartlink_click', 'made-in-babel', item);
+  console.log('jcarr_smartlink_click', release, item);
   return response.status(204).end();
 }

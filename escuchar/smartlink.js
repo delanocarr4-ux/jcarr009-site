@@ -1,4 +1,5 @@
 const albumUrl = document.querySelector('link[rel="canonical"]').href;
+const release = new URL(albumUrl).pathname.split('/').pop();
 const shareSection = document.querySelector('.share-album');
 const shareButton = document.querySelector('#share-album');
 const shareFallback = document.querySelector('.share-fallback');
@@ -11,7 +12,7 @@ shareButton.addEventListener('click', async () => {
 
   if (navigator.share) {
     try {
-      await navigator.share({ title: 'Made in Babel · J.Cärr', url: albumUrl });
+      await navigator.share({ title: document.title, url: albumUrl });
       return;
     } catch (error) {
       if (error.name === 'AbortError') return;
@@ -33,7 +34,7 @@ function recordClick(event) {
   const link = event.target.closest('a[data-click]');
   if (!link || (event.type === 'auxclick' && event.button !== 1)) return;
 
-  const body = new URLSearchParams({ item: link.dataset.click });
+  const body = new URLSearchParams({ release, item: link.dataset.click });
   if (navigator.sendBeacon?.('/api/smartlink-click', body)) return;
   fetch('/api/smartlink-click', { method: 'POST', body, keepalive: true }).catch(() => {});
 }

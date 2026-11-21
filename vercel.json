@@ -1,5 +1,6 @@
 {
   "rewrites": [
-    { "source": "/escuchar/made-in-babel", "destination": "/escuchar/made-in-babel.html" }
+    { "source": "/escuchar/made-in-babel", "destination": "/escuchar/made-in-babel.html" },
+    { "source": "/escuchar/tu-luz-inmensa", "destination": "/escuchar/tu-luz-inmensa.html" }
   ]
 }
