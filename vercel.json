@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/escuchar/made-in-babel", "destination": "/escuchar/made-in-babel.html" }
+  ]
+}

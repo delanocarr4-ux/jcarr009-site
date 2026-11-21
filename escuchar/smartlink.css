@@ -1,0 +1,88 @@
+:root {
+  color-scheme: dark;
+  --bg: #090c12;
+  --ink: #f7f8fc;
+  --muted: #b7becf;
+  --blue: #8cb9ff;
+  --line: #ffffff29;
+}
+* { box-sizing: border-box; }
+body {
+  position: relative;
+  isolation: isolate;
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font: 1rem/1.5 system-ui, sans-serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: -24px;
+  z-index: -2;
+  background: url("/assets/made-in-babel.jpg") center 35% / cover no-repeat;
+  filter: blur(24px) saturate(.8);
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, #0a1025a6, #090c12f5 82%);
+}
+a { color: inherit; text-decoration: none; }
+a:focus-visible, iframe:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+.smart-header, main, footer { width: min(calc(100% - 2rem), 40rem); margin-inline: auto; }
+.smart-header { display: flex; justify-content: center; padding-block: 1.35rem .85rem; }
+.smart-header a { display: inline-flex; align-items: center; min-height: 44px; }
+.smart-header img { display: block; width: 8.75rem; height: auto; }
+.feature { text-align: center; }
+h1 { margin: 0 0 1rem; font-size: clamp(2.6rem, 8vw, 5.2rem); line-height: .98; letter-spacing: -.077em; font-weight: 950; }
+.video {
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #090c12;
+  box-shadow: 0 1rem 3rem #0008;
+}
+.video iframe { display: block; width: 100%; height: 100%; border: 0; }
+.video-link { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); font-size: .875rem; text-decoration: underline; text-underline-offset: .2em; }
+.platforms { max-width: 32rem; margin: 1.35rem auto 0; }
+h2 { margin: 0 0 .85rem; text-align: center; font-size: clamp(1.25rem, 4vw, 1.65rem); }
+.platforms ul { display: grid; gap: .65rem; padding: 0; margin: 0; list-style: none; }
+.platforms a {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr auto;
+  gap: .85rem;
+  align-items: center;
+  min-height: 56px;
+  padding: .7rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: .65rem;
+  background: #101522ed;
+  font-weight: 700;
+  transition: transform .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.platforms a:hover, .platforms a:focus-visible { transform: translateY(-2px); background: #1d2b42; border-color: var(--blue); box-shadow: 0 6px 24px #1e65df39; }
+.platforms a:active { transform: translateY(1px); }
+.play, .youtube-icon { display: grid; place-items: center; }
+.play { width: 1.8rem; height: 1.8rem; border-radius: 50%; background: #8cb9ff24; color: #c1d9ff; }
+.youtube-icon { width: 24px; height: 17px; border-radius: 4px; background: #ff0033; color: white; }
+.play::before, .youtube-icon::before { content: ""; border-left: 7px solid currentColor; border-block: 4px solid transparent; margin-left: 2px; }
+footer { padding: 1.45rem 0 2rem; }
+.social { display: flex; justify-content: center; align-items: center; gap: clamp(.45rem, 4vw, 1.5rem); white-space: nowrap; }
+.social a { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); font-size: .875rem; padding-inline: .25rem; }
+.social a:hover, .video-link:hover { color: var(--blue); }
+@media (prefers-reduced-motion: no-preference) {
+  .platforms li { animation: button-enter .42s ease-out both; }
+  .platforms li:nth-child(2) { animation-delay: .06s; }
+  .platforms li:nth-child(3) { animation-delay: .12s; }
+  .platforms li:nth-child(4) { animation-delay: .18s; }
+  @keyframes button-enter { from { opacity: 0; transform: translateY(10px); } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .platforms a { transition: none; }
+  .platforms a:hover, .platforms a:focus-visible, .platforms a:active { transform: none; }
+}
