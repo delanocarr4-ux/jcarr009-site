@@ -14,6 +14,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/assets/logo.webp" type="image/webp">
   <link rel="stylesheet" href="/escuchar/smartlink.css">
+  <script src="/escuchar/smartlink.js" defer></script>
 </head>
 <body>
   <header class="smart-header">
@@ -30,25 +31,33 @@
     <section class="platforms" aria-labelledby="platforms-title">
       <h2 id="platforms-title">Escucha el álbum</h2>
       <ul>
-        <li><a href="https://open.spotify.com/album/6uS4Uuddfu4AxHEZzbmQiL" target="_blank" rel="noopener"><img src="/assets/icons/spotify.svg" alt="" width="24" height="24"><span>Spotify</span><span class="play" aria-hidden="true"></span></a></li>
-        <li><a href="https://music.apple.com/pa/album/made-in-babel/6788732557" target="_blank" rel="noopener"><img src="/assets/icons/apple-music.svg" alt="" width="24" height="24"><span>Apple Music</span><span class="play" aria-hidden="true"></span></a></li>
-        <li><a href="https://www.youtube.com/playlist?list=OLAK5uy_nnN2UBa3UplZBfeBOZh5Bqqu33S4gfI9U" target="_blank" rel="noopener"><span class="youtube-icon" aria-hidden="true"></span><span>YouTube</span><span class="play" aria-hidden="true"></span></a></li>
-        <li><a href="https://audiomack.com/jcarr009/album/made-in-babel" target="_blank" rel="noopener"><img src="/assets/icons/audiomack.svg" alt="" width="24" height="24"><span>Audiomack</span><span class="play" aria-hidden="true"></span></a></li>
+        <li><a data-click="platform-spotify" href="https://open.spotify.com/album/6uS4Uuddfu4AxHEZzbmQiL" target="_blank" rel="noopener"><img src="/assets/icons/spotify.svg" alt="" width="24" height="24"><span>Spotify</span><span class="play" aria-hidden="true"></span></a></li>
+        <li><a data-click="platform-apple-music" href="https://music.apple.com/pa/album/made-in-babel/6788732557" target="_blank" rel="noopener"><img src="/assets/icons/apple-music.svg" alt="" width="24" height="24"><span>Apple Music</span><span class="play" aria-hidden="true"></span></a></li>
+        <li><a data-click="platform-youtube" href="https://www.youtube.com/playlist?list=OLAK5uy_nnN2UBa3UplZBfeBOZh5Bqqu33S4gfI9U" target="_blank" rel="noopener"><span class="youtube-icon" aria-hidden="true"></span><span>YouTube</span><span class="play" aria-hidden="true"></span></a></li>
+        <li><a data-click="platform-audiomack" href="https://audiomack.com/jcarr009/album/made-in-babel" target="_blank" rel="noopener"><img src="/assets/icons/audiomack.svg" alt="" width="24" height="24"><span>Audiomack</span><span class="play" aria-hidden="true"></span></a></li>
       </ul>
     </section>
+    <div class="share-album" hidden>
+      <button type="button" id="share-album">Compartir álbum</button>
+      <div class="share-fallback" hidden>
+        <label for="album-url">Copia este enlace</label>
+        <input id="album-url" type="url" value="https://jcarr009.com/escuchar/made-in-babel" readonly>
+      </div>
+      <p id="share-status" role="status"></p>
+    </div>
     <section class="album-details" aria-labelledby="album-title">
       <h2 id="album-title">Sobre el álbum</h2>
       <p>Inspirado en el relato de Babel, J.Cärr reúne ocho canciones en siete idiomas alrededor de una misma fe. El álbum mezcla Christian EDM, Future Bass y Dubstep, y abre con una canción que une los siete idiomas.</p>
       <h3 id="tracks-title">Canciones e idiomas</h3>
       <ol class="tracklist" aria-labelledby="tracks-title">
-        <li><strong>Made in Babel</strong><span>Multilingüe · 7 idiomas</span></li>
-        <li><strong lang="en">Free Light</strong><span>Inglés</span></li>
-        <li><strong>Luz y Fe</strong><span>Español</span></li>
-        <li><strong lang="ja">ひかりのてん</strong><span>Japonés</span></li>
-        <li><strong lang="hi">प्रेम की ज्योति</strong><span>Hindi</span></li>
-        <li><strong lang="pt">Céu de luz</strong><span>Portugués</span></li>
-        <li><strong lang="ko">영광의 빛</strong><span>Coreano</span></li>
-        <li><strong lang="fr">Lumière et Amour</strong><span>Francés</span></li>
+        <li><a data-click="track-uykxuPFAyHA" href="https://www.youtube.com/watch?v=uykxuPFAyHA" target="_blank" rel="noopener"><strong>Made in Babel</strong><span>Multilingüe · 7 idiomas</span><span class="track-play" aria-hidden="true"></span></a></li>
+        <li><a data-click="track-njiXB1XBPBc" href="https://www.youtube.com/watch?v=njiXB1XBPBc" target="_blank" rel="noopener"><strong lang="en">Free Light</strong><span>Inglés</span><span class="track-play" aria-hidden="true"></span></a></li>
+        <li><a data-click="track-N81xVNV19sU" href="https://www.youtube.com/watch?v=N81xVNV19sU" target="_blank" rel="noopener"><strong>Luz y Fe</strong><span>Español</span><span class="track-play" aria-hidden="true"></span></a></li>
+        <li><a data-click="track-1XYWZsVnRuU" href="https://www.youtube.com/watch?v=1XYWZsVnRuU" target="_blank" rel="noopener"><strong lang="ja">ひかりのてん</strong><span>Japonés</span><span class="track-play" aria-hidden="true"></span></a></li>
+        <li><a data-click="track-Rvh5rCWFy7Y" href="https://www.youtube.com/watch?v=Rvh5rCWFy7Y" target="_blank" rel="noopener"><strong lang="hi">प्रेम की ज्योति</strong><span>Hindi</span><span class="track-play" aria-hidden="true"></span></a></li>
+        <li><a data-click="track-s3-dhrV-S8E" href="https://www.youtube.com/watch?v=s3-dhrV-S8E" target="_blank" rel="noopener"><strong lang="pt">Céu de luz</strong><span>Portugués</span><span class="track-play" aria-hidden="true"></span></a></li>
+        <li><a data-click="track-sor-maL6BL4" href="https://www.youtube.com/watch?v=sor-maL6BL4" target="_blank" rel="noopener"><strong lang="ko">영광의 빛</strong><span>Coreano</span><span class="track-play" aria-hidden="true"></span></a></li>
+        <li><a data-click="track-KuxufouoNNA" href="https://www.youtube.com/watch?v=KuxufouoNNA" target="_blank" rel="noopener"><strong lang="fr">Lumière et Amour</strong><span>Francés</span><span class="track-play" aria-hidden="true"></span></a></li>
       </ol>
     </section>
   </main>
