@@ -6,6 +6,7 @@ const platforms = [
 ];
 
 const allowedItems = new Map([
+  ['todo-es-alegria', new Set(['platform-apple-music', 'platform-youtube', 'platform-deezer'])],
   ['tu-luz-inmensa', new Set(platforms)],
   ['made-in-babel', new Set([
     ...platforms,
